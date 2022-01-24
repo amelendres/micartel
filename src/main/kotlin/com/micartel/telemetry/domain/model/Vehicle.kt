@@ -26,6 +26,10 @@ class Vehicle private constructor(
         telemetryDevice = device
     }
 
+    fun isTelemetric():Boolean{
+        return ::telemetryDevice.isInitialized
+    }
+
     fun changeMileage(other: Mileage){
         if (!::mileage.isInitialized){
             mileage = other
@@ -40,6 +44,8 @@ class Vehicle private constructor(
     }
 
     fun changeBatteryLevel(level: BatteryLevel){
+        if (!category.isElectric() and !category.isHybrid()) throw CannotChangeBatteryLevelToFuelVehicleException(chassis, category)
+
         if (!::batteryLevel.isInitialized){
             batteryLevel = level
             return
@@ -51,6 +57,8 @@ class Vehicle private constructor(
     }
 
     fun refuel(qty: FuelLevel){
+        if(category.isElectric()) throw CannotRefuelElectricVehicleException(chassis, category)
+
         fuelLevel = if (::fuelLevel.isInitialized) fuelLevel.increment(qty) else qty
     }
 

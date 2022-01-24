@@ -15,6 +15,11 @@ class VehicleRegistrar {
         return this
     }
 
+    fun withCategory(cat: Category): VehicleRegistrar {
+        category = cat
+        return this
+    }
+
     fun register() : Vehicle {
         return Vehicle.register(
             chassis,

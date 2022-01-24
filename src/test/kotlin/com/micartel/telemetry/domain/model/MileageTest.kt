@@ -38,6 +38,5 @@ internal class MileageTest : ValueObjectTest<Mileage> {
         val other = Mileage(10, MileageUnit.MILE)
 
         assertThat(mileage).isNotEqualTo(other)
-
     }
 }

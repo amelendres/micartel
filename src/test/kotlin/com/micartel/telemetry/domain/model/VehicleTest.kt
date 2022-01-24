@@ -67,6 +67,16 @@ internal class VehicleTest : EntityTest<Vehicle> {
     }
 
     @Test
+    fun `should not allow to change BatteryLevel for non hybrid or electric Vehicle's`() {
+        val fuelVehicle = VehicleMother.fuel()
+        val batteryLevel = BatteryLevel(1)
+
+        assertThrows<CannotChangeBatteryLevelToFuelVehicleException> {
+            fuelVehicle.changeBatteryLevel(batteryLevel)
+        }
+    }
+
+    @Test
     fun `should refuel`() {
         val fuelLevel = FuelLevel(50)
         val vehicle = VehicleMother.withFuel(fuelLevel)
@@ -107,4 +117,13 @@ internal class VehicleTest : EntityTest<Vehicle> {
         }
     }
 
+    @Test
+    fun `should not allow to refuel Electric Vehicle's`() {
+        val electricVehicle = VehicleMother.electric()
+        val fuelLevel = FuelLevel(100)
+
+        assertThrows<CannotRefuelElectricVehicleException> {
+            electricVehicle.refuel(fuelLevel)
+        }
+    }
 }

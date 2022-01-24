@@ -8,7 +8,7 @@ data class FuelLevel(val value:Int) {
     }
 
     override fun toString(): String {
-        return "$value"
+        return value.toString()
     }
 
     fun increment(other:FuelLevel):FuelLevel{

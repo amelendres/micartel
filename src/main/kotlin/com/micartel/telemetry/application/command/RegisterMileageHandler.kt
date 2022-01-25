@@ -1,6 +1,7 @@
 package com.micartel.telemetry.application.command
 
 import com.micartel.telemetry.domain.model.*
+import com.micartel.telemetry.domain.model.SerialNumber
 
 class RegisterMileageHandler(private val vehicleRepository: TelemetricVehicleRepository){
     fun handle(c: RegisterMileageCommand) {

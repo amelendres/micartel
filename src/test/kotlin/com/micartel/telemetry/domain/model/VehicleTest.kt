@@ -1,6 +1,8 @@
 package com.micartel.telemetry.domain.model
 
 import com.micartel.telemetry.domain.builder.VehicleRegistrar
+import com.micartel.telemetry.domain.model.vehicle.ChassisNumber
+import com.micartel.telemetry.domain.model.vehicle.Vehicle
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 

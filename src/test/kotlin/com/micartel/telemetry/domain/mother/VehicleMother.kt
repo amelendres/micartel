@@ -2,16 +2,20 @@ package com.micartel.telemetry.domain.mother
 
 import com.micartel.telemetry.domain.builder.VehicleRegistrar
 import com.micartel.telemetry.domain.model.*
+import com.micartel.telemetry.domain.model.BatteryLevel
+import com.micartel.telemetry.domain.model.vehicle.Category
+import com.micartel.telemetry.domain.model.vehicle.ChassisNumber
+import com.micartel.telemetry.domain.model.SerialNumber
 import com.micartel.telemetry.domain.service.assignTelemetryDevice
 
 const val CATEGORY_ELECTRIC = "CCAE"
 const val CATEGORY_HYBRID = "CCAI"
 const val CATEGORY_FUEL = "CCAD"
-val device:SerialNumber = SerialNumber("G-34567")
+val device: SerialNumber = SerialNumber("G-34567")
 
 class VehicleMother {
     companion object {
-        fun with(chassis:ChassisNumber, device:SerialNumber): TelemetricVehicle{
+        fun with(chassis: ChassisNumber, device: SerialNumber): TelemetricVehicle{
             return VehicleRegistrar()
                 .withChassis(chassis)
                 .register()
@@ -47,7 +51,7 @@ class VehicleMother {
                 .register()
                 .assignTelemetryDevice(device)
         }
-        private fun withCategory(cat:Category): TelemetricVehicle{
+        private fun withCategory(cat: Category): TelemetricVehicle{
             return VehicleRegistrar()
                 .withCategory(cat)
                 .register()

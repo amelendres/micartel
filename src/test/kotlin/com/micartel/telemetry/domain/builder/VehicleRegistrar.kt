@@ -1,6 +1,6 @@
 package com.micartel.telemetry.domain.builder
 
-import com.micartel.telemetry.domain.model.*
+import com.micartel.telemetry.domain.model.vehicle.*
 import java.time.LocalDateTime
 
 class VehicleRegistrar {

@@ -1,6 +1,7 @@
 package com.micartel.telemetry.port.adapter.persistence.inmemory
 
 import com.micartel.telemetry.domain.model.*
+import com.micartel.telemetry.domain.model.SerialNumber
 import org.springframework.stereotype.Component
 
 @Component

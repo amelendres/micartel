@@ -1,4 +1,4 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
 data class Vehicle constructor(
     val chassis: ChassisNumber,

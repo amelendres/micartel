@@ -1,5 +1,8 @@
 package com.micartel.telemetry.domain.model
 
+import com.micartel.telemetry.domain.model.vehicle.Category
+import com.micartel.telemetry.domain.model.vehicle.ChassisNumber
+
 class TelemetricVehicle constructor(
     val chassis: ChassisNumber,
     val category: Category,

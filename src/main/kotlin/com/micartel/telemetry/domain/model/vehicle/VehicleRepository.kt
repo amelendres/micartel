@@ -1,4 +1,4 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
 interface VehicleRepository {
     fun save(vehicle: Vehicle)

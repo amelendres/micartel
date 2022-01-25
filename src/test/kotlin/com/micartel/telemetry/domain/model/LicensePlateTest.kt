@@ -1,5 +1,6 @@
 package com.micartel.telemetry.domain.model
 
+import com.micartel.telemetry.domain.model.vehicle.LicensePlate
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 

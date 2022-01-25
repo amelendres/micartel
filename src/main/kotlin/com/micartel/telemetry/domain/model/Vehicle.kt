@@ -73,8 +73,7 @@ class Vehicle private constructor(
         if (javaClass != other?.javaClass) return false
 
         other as Vehicle
-        if (chassis != other.chassis) return false
-        return true
+        return chassis == other.chassis
     }
 
     override fun hashCode(): Int {

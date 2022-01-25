@@ -1,4 +1,4 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
 val licensePlatePattern = "[A-Z0-9]+".toRegex()
 

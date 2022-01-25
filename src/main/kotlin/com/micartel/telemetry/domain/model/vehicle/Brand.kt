@@ -1,4 +1,4 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
 @JvmInline
 value class Brand(private val value: String) {

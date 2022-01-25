@@ -1,5 +1,6 @@
 package com.micartel.telemetry.domain.model
 
+import com.micartel.telemetry.domain.model.vehicle.Category
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest

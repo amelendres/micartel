@@ -1,11 +1,12 @@
 package com.micartel.telemetry.application.command
 
-import com.micartel.telemetry.domain.model.*
+import com.micartel.telemetry.domain.model.vehicle.*
 import org.springframework.stereotype.Component
 
 @Component
 class RegisterVehicleHandler(private val vehicleRepository: VehicleRepository,
-                             private val uniqueValidator: UniqueVehicleValidator ){
+                             private val uniqueValidator: UniqueVehicleValidator
+){
     fun handle(c: RegisterVehicleCommand) {
         val vehicle = Vehicle.register(
             ChassisNumber(c.chassisNumber),

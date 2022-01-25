@@ -1,4 +1,4 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME

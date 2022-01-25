@@ -1,10 +1,12 @@
 package com.micartel.telemetry.application.command
 
 import com.micartel.telemetry.domain.model.*
+import com.micartel.telemetry.domain.model.SerialNumber
 
-class RegisterMileageHandler(private val vehicleRepository: VehicleRepository){
+class RegisterMileageHandler(private val vehicleRepository: TelemetricVehicleRepository){
     fun handle(c: RegisterMileageCommand) {
-        var vehicle = vehicleRepository.getByTelemetryDevice(SerialNumber(c.serialNumber))
+        val vehicle = vehicleRepository.get(SerialNumber(c.serialNumber))
+
         vehicle.changeMileage(Mileage(c.mileage, MileageUnit.KM))
         vehicleRepository.save(vehicle)
     }

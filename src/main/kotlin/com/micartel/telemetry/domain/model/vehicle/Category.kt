@@ -1,4 +1,4 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
 const val CATEGORY_LENGTH = 4
 
@@ -8,7 +8,7 @@ val trans = "[MNCABD]{1}".toRegex()
 val fuelAir = "[RNDQHIECLSABMFVZUX]{1}".toRegex()
 val hybrid = "[HI]{1}".toRegex()
 val electric = "[EC]{1}".toRegex()
-val categoryPatterns = arrayOf(cat,type,trans,fuelAir)
+val categoryPatterns = arrayOf(cat, type, trans, fuelAir)
 
 data class Category (val value:String) {
     init {

@@ -1,4 +1,4 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
 val chassisNumberPattern = "[a-zA-Z0-9]{17}".toRegex()
 

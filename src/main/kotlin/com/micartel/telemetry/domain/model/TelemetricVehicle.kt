@@ -1,34 +1,16 @@
 package com.micartel.telemetry.domain.model
 
-class Vehicle private constructor(
+import com.micartel.telemetry.domain.model.vehicle.Category
+import com.micartel.telemetry.domain.model.vehicle.ChassisNumber
+
+class TelemetricVehicle constructor(
     val chassis: ChassisNumber,
-    val licensePlate: LicensePlate,
-    val brand: Brand,
     val category: Category,
-    val inFleetDate: InFleetDate
+    val telemetryDevice: SerialNumber
 ){
-    lateinit var telemetryDevice: SerialNumber
     lateinit var mileage: Mileage
     lateinit var batteryLevel: BatteryLevel
     lateinit var fuelLevel: FuelLevel
-
-    companion object {
-        fun register(
-            chassis: ChassisNumber,
-            licensePlate: LicensePlate,
-            brand: Brand,
-            category: Category,
-            inFleetDate: InFleetDate
-        ) = Vehicle(chassis, licensePlate, brand, category, inFleetDate)
-    }
-
-    fun assignTelemetryDevice(device:SerialNumber){
-        telemetryDevice = device
-    }
-
-    fun isTelemetric():Boolean{
-        return ::telemetryDevice.isInitialized
-    }
 
     fun changeMileage(other: Mileage){
         if (!::mileage.isInitialized){
@@ -72,8 +54,10 @@ class Vehicle private constructor(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Vehicle
+        other as TelemetricVehicle
         return chassis == other.chassis
+                && telemetryDevice == other.telemetryDevice
+
     }
 
     override fun hashCode(): Int {

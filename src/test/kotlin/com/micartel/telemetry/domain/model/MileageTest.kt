@@ -3,16 +3,25 @@ package com.micartel.telemetry.domain.model
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 
 internal class MileageTest : ValueObjectTest<Mileage> {
 
     override fun createValue() = Mileage(10, MileageUnit.KM)
     override fun createOtherValue() = Mileage(20, MileageUnit.KM)
 
-    @Test
-    fun `should not allow the creation of invalid Mileage's`() {
+
+    @ParameterizedTest
+    @CsvSource(
+        "-100, Km",
+        "100, gr",
+        "100, m",
+        "100, €",
+    )
+    fun `should not allow the creation of invalid Mileage's`(mileage:Int, unit:String) {
         assertThrows<IllegalArgumentException> {
-            Mileage(-1, MileageUnit.KM)
+            Mileage(mileage, MileageUnit.valueOf(unit))
         }
     }
 

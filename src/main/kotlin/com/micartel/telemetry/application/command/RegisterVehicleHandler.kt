@@ -8,7 +8,7 @@ class RegisterVehicleHandler(private val vehicleRepository: VehicleRepository,
                              private val uniqueValidator: UniqueVehicleValidator
 ){
     fun handle(c: RegisterVehicleCommand) {
-        val vehicle = Vehicle.register(
+        val vehicle = Vehicle(
             ChassisNumber(c.chassisNumber),
             LicensePlate(c.licensePlate),
             Brand(c.brand),

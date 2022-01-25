@@ -1,6 +1,6 @@
 package com.micartel.telemetry.domain.model.vehicle
 
-val chassisNumberPattern = "[a-zA-Z0-9]{17}".toRegex()
+private val chassisNumberPattern = "[a-zA-Z0-9]{17}".toRegex()
 
 @JvmInline
 value class ChassisNumber(private val value:String) {

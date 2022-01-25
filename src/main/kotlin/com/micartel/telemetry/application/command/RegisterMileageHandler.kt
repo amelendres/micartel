@@ -7,7 +7,7 @@ class RegisterMileageHandler(private val vehicleRepository: TelemetricVehicleRep
     fun handle(c: RegisterMileageCommand) {
         val vehicle = vehicleRepository.get(SerialNumber(c.serialNumber))
 
-        vehicle.changeMileage(Mileage(c.mileage, MileageUnit.KM))
+        vehicle.changeMileage(Mileage(c.mileage, MileageUnit.valueOf(c.unit.uppercase())))
         vehicleRepository.save(vehicle)
     }
 }

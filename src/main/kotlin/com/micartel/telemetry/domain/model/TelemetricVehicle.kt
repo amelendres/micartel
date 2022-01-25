@@ -3,7 +3,7 @@ package com.micartel.telemetry.domain.model
 import com.micartel.telemetry.domain.model.vehicle.Category
 import com.micartel.telemetry.domain.model.vehicle.ChassisNumber
 
-class TelemetricVehicle constructor(
+data class TelemetricVehicle(
     val chassis: ChassisNumber,
     val category: Category,
     val telemetryDevice: SerialNumber

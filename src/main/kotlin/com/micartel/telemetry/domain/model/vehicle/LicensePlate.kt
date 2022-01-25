@@ -1,6 +1,6 @@
 package com.micartel.telemetry.domain.model.vehicle
 
-val licensePlatePattern = "[A-Z0-9]+".toRegex()
+private val licensePlatePattern = "[A-Z0-9]+".toRegex()
 
 @JvmInline
 value class LicensePlate(private val value:String) {

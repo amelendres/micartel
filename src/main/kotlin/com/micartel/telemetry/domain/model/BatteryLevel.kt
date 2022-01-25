@@ -1,14 +1,15 @@
 package com.micartel.telemetry.domain.model
 
-const val batteryMinLevel = 0
-const val batteryMaxLevel = 100
+private const val BATTERY_MIN_LEVEL = 0
+private const val BATTERY_MAX_LEVEL = 100
+
 data class BatteryLevel(val value:Int) {
     init {
-        require(value >= batteryMinLevel ) {
-            "The BatteryLevel $value should not be lower than $batteryMinLevel"
+        require(value >= BATTERY_MIN_LEVEL ) {
+            "The BatteryLevel $value should not be lower than $BATTERY_MIN_LEVEL"
         }
-        require(value <= batteryMaxLevel) {
-            "The BatteryLevel $value should not be greater than $batteryMaxLevel"
+        require(value <= BATTERY_MAX_LEVEL) {
+            "The BatteryLevel $value should not be greater than $BATTERY_MAX_LEVEL"
         }
     }
 

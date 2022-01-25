@@ -1,14 +1,14 @@
 package com.micartel.telemetry.domain.model.vehicle
 
-const val CATEGORY_LENGTH = 4
+private const val CATEGORY_LENGTH = 4
 
-val cat = "[MNEHCDIJSRFGPULWOX]{1}".toRegex()
-val type = "[BCDWVLSTFJXPQZEMRHYNGK]{1}".toRegex()
-val trans = "[MNCABD]{1}".toRegex()
-val fuelAir = "[RNDQHIECLSABMFVZUX]{1}".toRegex()
-val hybrid = "[HI]{1}".toRegex()
-val electric = "[EC]{1}".toRegex()
-val categoryPatterns = arrayOf(cat, type, trans, fuelAir)
+private val cat = "[MNEHCDIJSRFGPULWOX]{1}".toRegex()
+private val type = "[BCDWVLSTFJXPQZEMRHYNGK]{1}".toRegex()
+private val trans = "[MNCABD]{1}".toRegex()
+private val fuelAir = "[RNDQHIECLSABMFVZUX]{1}".toRegex()
+private val hybrid = "[HI]{1}".toRegex()
+private val electric = "[EC]{1}".toRegex()
+private val categoryPatterns = arrayOf(cat, type, trans, fuelAir)
 
 data class Category (val value:String) {
     init {

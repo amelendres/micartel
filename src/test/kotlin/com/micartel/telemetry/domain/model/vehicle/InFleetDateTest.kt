@@ -1,6 +1,6 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
-import com.micartel.telemetry.domain.model.vehicle.InFleetDate
+import com.micartel.telemetry.domain.model.ValueObjectTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows

@@ -1,6 +1,6 @@
-package com.micartel.telemetry.domain.model
+package com.micartel.telemetry.domain.model.vehicle
 
-import com.micartel.telemetry.domain.model.vehicle.ChassisNumber
+import com.micartel.telemetry.domain.model.ValueObjectTest
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource

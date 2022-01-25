@@ -1,25 +1,25 @@
 package com.micartel.telemetry.domain.model
 
 import com.micartel.telemetry.domain.model.vehicle.ChassisNumber
-import com.micartel.telemetry.domain.mother.VehicleMother
+import com.micartel.telemetry.domain.mother.TelemetricVehicleMother
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
     override fun createEqualEntities() = Pair(
-        VehicleMother.electric(),
-        VehicleMother.electric(),
+        TelemetricVehicleMother.electric(),
+        TelemetricVehicleMother.electric(),
     )
 
     override fun createNonEqualEntities() = Pair(
-        VehicleMother.electric(),
-        VehicleMother.with(ChassisNumber("ChassisNumber5678"), SerialNumber("A-12345")),
+        TelemetricVehicleMother.electric(),
+        TelemetricVehicleMother.with(ChassisNumber("ChassisNumber5678"), SerialNumber("A-12345")),
     )
 
     @Test
     fun `should add mileage`() {
-        val vehicle = VehicleMother.electric()
+        val vehicle = TelemetricVehicleMother.electric()
         val mileage = Mileage(100, MileageUnit.KM)
 
         vehicle.changeMileage(mileage)
@@ -29,7 +29,7 @@ internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
     @Test
     fun `should not allow to reduce mileage`() {
         val mileage = Mileage(10, MileageUnit.KM)
-        val vehicle = VehicleMother.withMileage(mileage)
+        val vehicle = TelemetricVehicleMother.withMileage(mileage)
         val other = Mileage(9, MileageUnit.KM)
 
         assertThrows<CannotReduceMileageException> {
@@ -40,7 +40,7 @@ internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
     @Test
     fun `should change battery level`() {
         val batteryLevel = BatteryLevel(0)
-        val vehicle = VehicleMother.withBatteryLevel(batteryLevel)
+        val vehicle = TelemetricVehicleMother.withBatteryLevel(batteryLevel)
         val other = BatteryLevel(1)
 
         vehicle.changeBatteryLevel(other)
@@ -49,7 +49,7 @@ internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
 
     @Test
     fun `should not allow to change BatteryLevel for non hybrid or electric Vehicle's`() {
-        val fuelVehicle = VehicleMother.fuel()
+        val fuelVehicle = TelemetricVehicleMother.fuel()
         val batteryLevel = BatteryLevel(1)
 
         assertThrows<CannotChangeBatteryLevelToFuelVehicleException> {
@@ -60,7 +60,7 @@ internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
     @Test
     fun `should refuel`() {
         val fuelLevel = FuelLevel(50)
-        val vehicle = VehicleMother.withFuel(fuelLevel)
+        val vehicle = TelemetricVehicleMother.withFuel(fuelLevel)
         val other = FuelLevel(20)
 
         vehicle.refuel(other)
@@ -70,7 +70,7 @@ internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
     @Test
     fun `should consume fuel`() {
         val fuelLevel = FuelLevel(50)
-        val vehicle = VehicleMother.withFuel(fuelLevel)
+        val vehicle = TelemetricVehicleMother.withFuel(fuelLevel)
         val other = FuelLevel(20)
 
         vehicle.consumeFuel(other)
@@ -80,7 +80,7 @@ internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
     @Test
     fun `should not allow negative FuelLevel`() {
         val fuelLevel = FuelLevel(50)
-        val vehicle = VehicleMother.withFuel(fuelLevel)
+        val vehicle = TelemetricVehicleMother.withFuel(fuelLevel)
         val other = FuelLevel(51)
 
         assertThrows<IllegalArgumentException> {
@@ -90,7 +90,7 @@ internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
 
     @Test
     fun `should not allow consume fuel before refuel`() {
-        val vehicle = VehicleMother.fuel()
+        val vehicle = TelemetricVehicleMother.fuel()
         val fuelLevel = FuelLevel(1)
 
         assertThrows<CannotConsumeBeforeRefuelException> {
@@ -100,7 +100,7 @@ internal class TelemetricVehicleTest : EntityTest<TelemetricVehicle> {
 
     @Test
     fun `should not allow to refuel Electric Vehicle's`() {
-        val electricVehicle = VehicleMother.electric()
+        val electricVehicle = TelemetricVehicleMother.electric()
         val fuelLevel = FuelLevel(100)
 
         assertThrows<CannotRefuelElectricVehicleException> {

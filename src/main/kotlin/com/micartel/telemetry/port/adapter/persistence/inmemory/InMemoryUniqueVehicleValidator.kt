@@ -1,15 +1,13 @@
 package com.micartel.telemetry.port.adapter.persistence.inmemory
 
-import com.micartel.telemetry.domain.model.vehicle.UniqueVehicleValidator
-import com.micartel.telemetry.domain.model.vehicle.Vehicle
-import com.micartel.telemetry.domain.model.vehicle.VehicleAlreadyExistsException
-import org.springframework.stereotype.Component
+import com.micartel.telemetry.domain.vehicle.UniqueVehicleValidator
+import com.micartel.telemetry.domain.vehicle.Vehicle
+import com.micartel.telemetry.domain.vehicle.VehicleAlreadyExistsException
+import org.springframework.stereotype.Repository
 
-@Component
+@Repository
 class InMemoryUniqueVehicleValidator(private val repo: InMemoryVehicleRepository) : UniqueVehicleValidator {
     override fun validate(vehicle: Vehicle) {
-        if (repo.find(vehicle.chassis)!=null){
-            throw VehicleAlreadyExistsException(vehicle.chassis)
-        }
+        repo.find(vehicle.chassis)?.also { throw VehicleAlreadyExistsException(vehicle.chassis) }
     }
 }

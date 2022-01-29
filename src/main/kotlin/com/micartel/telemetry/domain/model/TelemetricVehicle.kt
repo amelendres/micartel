@@ -13,14 +13,9 @@ data class TelemetricVehicle(
     lateinit var fuelLevel: FuelLevel
 
     fun changeMileage(other: Mileage){
-        if (!::mileage.isInitialized){
-            mileage = other
-            return
-        }
+        if (::mileage.isInitialized && mileage.greaterThan(other)) throw CannotReduceMileageException(mileage, other)
 
-        if (mileage.greaterThan(other)) throw CannotReduceMileageException(mileage, other)
-
-        if (mileage.equals(other)) return
+        if (::mileage.isInitialized && mileage.equals(other)) return
 
         mileage = other
     }
@@ -28,12 +23,7 @@ data class TelemetricVehicle(
     fun changeBatteryLevel(level: BatteryLevel){
         if (!category.isElectric() and !category.isHybrid()) throw CannotChangeBatteryLevelToFuelVehicleException(chassis, category)
 
-        if (!::batteryLevel.isInitialized){
-            batteryLevel = level
-            return
-        }
-
-        if (batteryLevel.equals(level)) return
+        if (::batteryLevel.isInitialized && batteryLevel.equals(level)) return
 
         batteryLevel = level
     }

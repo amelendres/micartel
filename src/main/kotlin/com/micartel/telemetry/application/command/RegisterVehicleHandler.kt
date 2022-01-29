@@ -1,9 +1,9 @@
 package com.micartel.telemetry.application.command
 
 import com.micartel.telemetry.domain.model.vehicle.*
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 
-@Component
+@Service
 class RegisterVehicleHandler(private val vehicleRepository: VehicleRepository,
                              private val uniqueValidator: UniqueVehicleValidator
 ){
